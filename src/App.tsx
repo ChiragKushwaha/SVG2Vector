@@ -5,7 +5,8 @@ import formatXML from "../utils/format-xml";
 import generateXml from "../utils/generate-xml";
 import JSZip from "jszip";
 import formatFileName from "../utils/format-file-name";
-import { ThemeToggle } from "./components/theme-toggle";
+import { ThemeToggle } from "../utils/theme-toggle";
+import { Meta, Title } from "solid-meta";
 
 // Enhanced metadata for SEO
 const metadata = {
@@ -137,23 +138,22 @@ const App: Component = () => {
   return (
     <div class={styles.app}>
       <header class={styles.header}>
-        {/* Add meta tags for better SEO */}
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:image" content={metadata.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
+        <Meta name="description" content={pageDescription} />
+        <Meta name="keywords" content={metadata.keywords} />
+        <Meta name="robots" content="index, follow" />
+        <Meta property="og:title" content={pageTitle} />
+        <Meta property="og:description" content={pageDescription} />
+        <Meta property="og:type" content="website" />
+        <Meta property="og:url" content={window.location.href} />
+        <Meta property="og:image" content={metadata.image} />
+        <Meta name="twitter:card" content="summary_large_image" />
+        <Meta name="twitter:title" content={pageTitle} />
+        <Meta name="twitter:description" content={pageDescription} />
+        <Meta
           name="google-site-verification"
           content="Ret-iSE1zLvQXAF88Yv_TTM8RNJlWAh2-aOuwfavx6o"
         />
-        <title>{pageTitle}</title>
+        <Title>{pageTitle}</Title>
 
         <ThemeToggle />
         <h1>{pageTitle}</h1>
@@ -161,7 +161,6 @@ const App: Component = () => {
       </header>
 
       <main class={styles.mainContent}>
-        {/* Schema.org metadata */}
         <script type="application/ld+json">{JSON.stringify(metadata)}</script>
 
         <div class={styles.columnsContainer}>
