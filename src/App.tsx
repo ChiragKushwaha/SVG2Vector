@@ -131,6 +131,9 @@ const App: Component = () => {
     }
   };
 
+  // Set the document title
+  document.title = pageTitle;
+
   return (
     <div class={styles.app}>
       <header class={styles.header}>
@@ -146,6 +149,7 @@ const App: Component = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
+        <title>{pageTitle}</title>
 
         <ThemeToggle />
         <h1>{pageTitle}</h1>
