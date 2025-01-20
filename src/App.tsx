@@ -149,6 +149,10 @@ const App: Component = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
+        <meta
+          name="google-site-verification"
+          content="Ret-iSE1zLvQXAF88Yv_TTM8RNJlWAh2-aOuwfavx6o"
+        />
         <title>{pageTitle}</title>
 
         <ThemeToggle />
