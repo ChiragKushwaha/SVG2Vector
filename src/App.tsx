@@ -4,7 +4,7 @@ import { createEffect, createSignal } from "solid-js";
 import formatFileName from "../utils/format-file-name";
 import formatXML from "../utils/format-xml";
 import generateXml from "../utils/generate-xml";
-import { ThemeToggle } from "../utils/theme-toggle";
+import { ThemeToggle } from "./components/theme-toggle";
 import styles from "./App.module.css";
 
 // Enhanced metadata for SEO
