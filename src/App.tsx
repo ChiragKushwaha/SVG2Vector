@@ -1,12 +1,11 @@
+import JSZip from "jszip";
 import type { Component } from "solid-js";
-import { createSignal } from "solid-js";
-import styles from "./App.module.css";
+import { createEffect, createSignal } from "solid-js";
+import formatFileName from "../utils/format-file-name";
 import formatXML from "../utils/format-xml";
 import generateXml from "../utils/generate-xml";
-import JSZip from "jszip";
-import formatFileName from "../utils/format-file-name";
 import { ThemeToggle } from "../utils/theme-toggle";
-import { Meta, Title } from "solid-meta";
+import styles from "./App.module.css";
 
 // Enhanced metadata for SEO
 const metadata = {
@@ -132,37 +131,34 @@ const App: Component = () => {
     }
   };
 
+  // JSON-LD structured data
+  const jsonLd = JSON.stringify(metadata);
+
+  // Inject JSON-LD into the head
+  createEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.innerHTML = jsonLd;
+    document.head.appendChild(script);
+
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.head.removeChild(script);
+    };
+  });
+
   // Set the document title
   document.title = pageTitle;
 
   return (
     <div class={styles.app}>
       <header class={styles.header}>
-        <Meta name="description" content={pageDescription} />
-        <Meta name="keywords" content={metadata.keywords} />
-        <Meta name="robots" content="index, follow" />
-        <Meta property="og:title" content={pageTitle} />
-        <Meta property="og:description" content={pageDescription} />
-        <Meta property="og:type" content="website" />
-        <Meta property="og:url" content={window.location.href} />
-        <Meta property="og:image" content={metadata.image} />
-        <Meta name="twitter:card" content="summary_large_image" />
-        <Meta name="twitter:title" content={pageTitle} />
-        <Meta name="twitter:description" content={pageDescription} />
-        <Meta
-          name="google-site-verification"
-          content="Ret-iSE1zLvQXAF88Yv_TTM8RNJlWAh2-aOuwfavx6o"
-        />
-        <Title>{pageTitle}</Title>
-
         <ThemeToggle />
         <h1>{pageTitle}</h1>
         <p>{pageDescription}</p>
       </header>
 
       <main class={styles.mainContent}>
-        <script type="application/ld+json">{JSON.stringify(metadata)}</script>
-
         <div class={styles.columnsContainer}>
           <div class={styles.column}>
             <div
