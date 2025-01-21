@@ -31,8 +31,8 @@ const metadata = {
   fileFormat: ["SVG", "XML"],
   permissions: "No installation required",
   url: window.location.href,
-  image: "path-to-your-app-screenshot.png", // Add your actual screenshot path
-  datePublished: "2024-01-01", // Add actual publication date
+  image: "/svg2vector.webp", // Add your actual screenshot path
+  datePublished: "2025-01-01",
   keywords:
     "SVG converter, Android Vector Drawable, XML converter, SVG to XML, mobile development tools, Android development",
 };
